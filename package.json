@@ -1,0 +1,12 @@
+{
+  "name": "DadCodes",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+     "dev:pigs": "pnpm run -C packages/interactive-three-little-pigs dev"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "packageManager": "pnpm@10.14.0"
+}
