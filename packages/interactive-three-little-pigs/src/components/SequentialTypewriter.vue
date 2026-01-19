@@ -91,7 +91,19 @@ const initializeSteps = () => {
   }
 };
 
+// 重置到指定步骤
+const resetToStep = (stepIndex) => {
+  currentStep.value = stepIndex;
+  saveProgress();
+  scrollToBottom();
+};
+
 onMounted(() => {
   initializeSteps();
+});
+
+// 暴露方法给父组件
+defineExpose({
+  resetToStep
 });
 </script>

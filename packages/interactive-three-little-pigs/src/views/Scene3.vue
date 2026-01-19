@@ -2,7 +2,7 @@
   <div
     class="min-h-screen px-4 sm:px-6 md:px-8 lg:px-12 py-6 sm:py-8 md:py-12 pb-24 sm:pb-32 md:pb-40"
   >
-    <SequentialTypewriter storage-key="scene3_progress">
+    <SequentialTypewriter ref="sequentialTypewriter" storage-key="scene3_progress">
       <!-- 步骤0: 噜噜来到森林 -->
       <template #step-0="{ isActive, isCompleted, onComplete }">
         <div class="mb-8">
@@ -142,6 +142,16 @@
               </p>
             </div>
           </div>
+
+          <!-- 再来一次按钮 -->
+          <div v-if="dragCount >= 3" class="flex justify-center mt-8">
+            <button
+              @click="resetBuildingProcess"
+              class="px-6 py-3 bg-blue-500 hover:bg-blue-600 text-black font-semibold rounded-lg shadow-md transition-all duration-300 hover:scale-105 active:scale-95"
+            >
+              再来一次
+            </button>
+          </div>
         </div>
       </template>
 
@@ -228,6 +238,7 @@ const loadWoodProgress = () => {
 
 const woodMaterial = ref(null);
 const houseContainer = ref(null);
+const sequentialTypewriter = ref(null);
 
 // 拖拽相关方法
 const onDragStart = (e) => {
@@ -366,6 +377,24 @@ const onFinalComplete = (onComplete) => {
   setTimeout(() => {
     router.push("/scene4");
   }, 2000); // 2秒后自动跳转
+};
+
+// 重置盖房子过程
+const resetBuildingProcess = () => {
+  // 重置木头拖拽次数
+  dragCount.value = 0;
+  
+  // 清除localStorage中的木头拖拽进度
+  try {
+    localStorage.removeItem(STORAGE_KEY);
+  } catch (error) {
+    console.error('清除木头拖拽进度失败:', error);
+  }
+  
+  // 重置story_progress到步骤2
+  if (sequentialTypewriter.value) {
+    sequentialTypewriter.value.resetToStep(2);
+  }
 };
 
 // 组件挂载时加载进度

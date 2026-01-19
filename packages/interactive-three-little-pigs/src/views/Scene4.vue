@@ -75,31 +75,6 @@
           <div
             class="flex flex-row justify-center items-end gap-8 sm:gap-16 lg:gap-24"
           >
-            <!-- 右侧：房子建造区域 -->
-            <div class="flex flex-col items-center space-y-4">
-              <div
-                class="relative drop-zone"
-                ref="houseContainer"
-                :class="{ 'drop-zone-active': isDragOver || isTouchOver }"
-                @dragover="onDragOver"
-                @dragenter="onDragEnter"
-                @dragleave="onDragLeave"
-                @drop="(e) => onDrop(e, onComplete)"
-              >
-                <img
-                  v-if="dragCount >= 10"
-                  src="../assets/images/houses/house_stone_finished.png"
-                  alt="完成的砖块房子"
-                  class="w-44 h-44 sm:w-64 sm:h-64 md:w-72 md:h-72 lg:w-80 lg:h-80 object-contain transition-all duration-500"
-                />
-                <img
-                  v-else
-                  src="../assets/images/houses/house_stone_unfinished.png"
-                  alt="未完成的砖块房子"
-                  class="w-44 h-44 sm:w-64 sm:h-64 md:w-72 md:h-72 lg:w-80 lg:h-80 object-contain transition-all duration-500"
-                />
-              </div>
-            </div>
             <!-- 左侧：材料区域 -->
             <div class="flex flex-col items-center space-y-4">
               <div class="relative">
@@ -140,6 +115,32 @@
                 <span class="sm:hidden">按住并滑动砖块到房子</span>
                 ({{ dragCount }}/10)
               </p>
+            </div>
+
+            <!-- 右侧：房子建造区域 -->
+            <div class="flex flex-col items-center space-y-4">
+              <div
+                class="relative drop-zone"
+                ref="houseContainer"
+                :class="{ 'drop-zone-active': isDragOver || isTouchOver }"
+                @dragover="onDragOver"
+                @dragenter="onDragEnter"
+                @dragleave="onDragLeave"
+                @drop="(e) => onDrop(e, onComplete)"
+              >
+                <img
+                  v-if="dragCount >= 10"
+                  src="../assets/images/houses/house_stone_finished.png"
+                  alt="完成的砖块房子"
+                  class="w-44 h-44 sm:w-64 sm:h-64 md:w-72 md:h-72 lg:w-80 lg:h-80 object-contain transition-all duration-500"
+                />
+                <img
+                  v-else
+                  src="../assets/images/houses/house_stone_unfinished.png"
+                  alt="未完成的砖块房子"
+                  class="w-44 h-44 sm:w-64 sm:h-64 md:w-72 md:h-72 lg:w-80 lg:h-80 object-contain transition-all duration-500"
+                />
+              </div>
             </div>
           </div>
         </div>

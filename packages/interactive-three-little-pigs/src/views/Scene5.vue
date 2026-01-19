@@ -2,7 +2,10 @@
   <div
     class="min-h-screen px-4 sm:px-6 md:px-8 lg:px-12 py-6 sm:py-8 md:py-12 pb-24 sm:pb-32 md:pb-40"
   >
-    <SequentialTypewriter storage-key="scene5_progress">
+    <SequentialTypewriter
+      ref="sequentialTypewriter"
+      storage-key="scene5_progress"
+    >
       <!-- 步骤1: 山后边住着一只大灰狼 -->
       <template #step-0="{ isActive, isCompleted, onComplete }">
         <div class="mb-8">
@@ -140,6 +143,16 @@
             </div>
           </div>
 
+          <!-- 再来一次按钮 -->
+          <div v-if="blowCount >= 2" class="flex justify-center mt-8">
+            <button
+              @click="resetBlowingProcess"
+              class="px-6 py-3 bg-blue-500 hover:bg-blue-600 text-black font-semibold rounded-lg shadow-md transition-all duration-300 hover:scale-105 active:scale-95"
+            >
+              再来一次
+            </button>
+          </div>
+
           <!-- 完成提示 -->
           <div v-if="blowCount >= 2" class="text-center">
             <div
@@ -149,7 +162,9 @@
                 v-if="isCompleted"
                 class="flex justify-center items-start min-h-32 sm:min-h-40 md:min-h-50 px-4 sm:px-6 md:px-8 py-6 sm:py-8 w-full"
               >
-                <div class="w-full max-w-sm sm:max-w-lg md:max-w-2xl lg:max-w-4xl">
+                <div
+                  class="w-full max-w-sm sm:max-w-lg md:max-w-2xl lg:max-w-4xl"
+                >
                   <p
                     class="text-lg sm:text-xl md:text-2xl lg:text-3xl leading-relaxed text-center text-gray-800 dark:text-gray-200 m-0 min-h-[3em] flex items-start justify-center"
                   >
@@ -179,7 +194,9 @@
               v-if="textCompleted || isCompleted"
               class="flex justify-center items-start min-h-32 sm:min-h-40 md:min-h-50 px-4 sm:px-6 md:px-8 py-6 sm:py-8 w-full"
             >
-              <div class="w-full max-w-sm sm:max-w-lg md:max-w-2xl lg:max-w-4xl">
+              <div
+                class="w-full max-w-sm sm:max-w-lg md:max-w-2xl lg:max-w-4xl"
+              >
                 <p
                   class="text-lg sm:text-xl md:text-2xl lg:text-3xl leading-relaxed text-center text-gray-800 dark:text-gray-200 m-0 min-h-[3em] flex items-start justify-center"
                 >
@@ -198,9 +215,12 @@
           </div>
 
           <!-- 逃跑场景 -->
-          <div v-if="textCompleted || isCompleted" class="flex justify-center items-center relative h-64">
+          <div
+            v-if="textCompleted || isCompleted"
+            class="flex justify-center items-center relative h-64"
+          >
             <!-- 逃跑的小猪 -->
-            <div 
+            <div
               class="absolute pig-escape"
               :class="{ 'pig-escaping': pigEscaping }"
             >
@@ -213,7 +233,6 @@
           </div>
         </div>
       </template>
-
     </SequentialTypewriter>
   </div>
 </template>
@@ -236,6 +255,7 @@ const blowCount = ref(0);
 const isBlowing = ref(false);
 const pigEscaping = ref(false);
 const textCompleted = ref(false);
+const sequentialTypewriter = ref(null);
 
 // localStorage 功能
 const STORAGE_KEY = "scene5_blow_progress";
@@ -295,10 +315,28 @@ const startEscapeAnimation = () => {
   pigEscaping.value = true;
   // 动画完成后跳转到 Scene6
   setTimeout(() => {
-    router.push('/scene6');
+    router.push("/scene6");
   }, 3500);
 };
- 
+
+// 重置吹房子过程
+const resetBlowingProcess = () => {
+  // 重置吹风次数
+  blowCount.value = 0;
+
+  // 清除localStorage中的吹风进度
+  try {
+    localStorage.removeItem(STORAGE_KEY);
+  } catch (error) {
+    console.error("清除吹风进度失败:", error);
+  }
+
+  // 重置story_progress到步骤3
+  if (sequentialTypewriter.value) {
+    sequentialTypewriter.value.resetToStep(3);
+  }
+};
+
 // 组件挂载时加载进度
 onMounted(() => {
   loadBlowProgress();
@@ -320,9 +358,16 @@ onMounted(() => {
 
 /* 左右摇摆动画 */
 @keyframes shake {
-  0%, 100% { transform: translateX(0); }
-  25% { transform: translateX(-4px); }
-  75% { transform: translateX(4px); }
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-4px);
+  }
+  75% {
+    transform: translateX(4px);
+  }
 }
 
 .animate-shake {
