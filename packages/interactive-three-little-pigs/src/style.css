@@ -1,7 +1,12 @@
 @import "tailwindcss";
+@import "./assets/fonts/fonts.css";
+
+@theme {
+  --font-family-custom: 'CustomFont', sans-serif;
+}
 
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: var(--font-family-custom);
   line-height: 1.5;
   font-weight: 400;
 
