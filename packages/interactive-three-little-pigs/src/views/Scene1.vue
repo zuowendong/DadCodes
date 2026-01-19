@@ -8,14 +8,14 @@
             <div class="w-full max-w-sm sm:max-w-lg md:max-w-2xl lg:max-w-4xl">
               <p class="text-lg sm:text-xl md:text-2xl lg:text-3xl leading-relaxed text-center text-gray-800 dark:text-gray-200 m-0 min-h-[3em] flex items-start justify-center">
                 <span class="inline-block">
-                  在很久很久以前，一个偏远的小山村里，有一位猪妈妈和她的三只小猪。
+                  在很久很久以前，一个偏远的小山村里，有一位猪妈妈和她的三只小猪，老大叫呼呼，老二叫噜噜，还有一个老三叫嘟。
                 </span>
               </p>
             </div>
           </div>
           <TypewriterText
             v-else-if="isActive"
-            text="在很久很久以前，一个偏远的小山村里，有一位猪妈妈和她的三只小猪。"
+            text="在很久很久以前，一个偏远的小山村里，有一位猪妈妈和她的三只小猪，老大叫呼呼，老二叫噜噜，还有一个老三叫嘟。"
             :speed="80"
             @complete="onComplete"
           />

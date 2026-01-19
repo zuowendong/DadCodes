@@ -3,33 +3,33 @@
     class="min-h-screen px-4 sm:px-6 md:px-8 lg:px-12 py-6 sm:py-8 md:py-12 pb-24 sm:pb-32 md:pb-40"
   >
     <SequentialTypewriter storage-key="scene3_progress">
-      <!-- 步骤0: 老二来到森林 -->
+      <!-- 步骤0: 噜噜来到森林 -->
       <template #step-0="{ isActive, isCompleted, onComplete }">
         <div class="mb-8">
           <div
             v-if="isCompleted"
-            class="flex justify-center items-start px-4 sm:px-6 md:px-8 py-4 sm:py-6 w-full"
+            class="flex justify-center items-start min-h-32 sm:min-h-40 md:min-h-50 px-4 sm:px-6 md:px-8 py-6 sm:py-8 w-full"
           >
             <div class="w-full max-w-sm sm:max-w-lg md:max-w-2xl lg:max-w-4xl">
               <p
-                class="text-lg sm:text-xl md:text-2xl lg:text-3xl leading-relaxed text-center text-gray-800 dark:text-gray-200 m-0 flex items-start justify-center"
+                class="text-lg sm:text-xl md:text-2xl lg:text-3xl leading-relaxed text-center text-gray-800 dark:text-gray-200 m-0 min-h-[3em] flex items-start justify-center"
               >
                 <span class="inline-block">
-                  老二走到森林里，看到了一堆木头。
+                  噜噜走到森林里，看到了一堆木头。
                 </span>
               </p>
             </div>
           </div>
           <TypewriterText
             v-else-if="isActive"
-            text="老二走到森林里，看到了一堆木头。"
+            text="噜噜走到森林里，看到了一堆木头。"
             :speed="80"
             @complete="onComplete"
           />
         </div>
       </template>
 
-      <!-- 步骤1: 老二的想法 -->
+      <!-- 步骤1: 噜噜的想法 -->
       <template #step-1="{ isActive, isCompleted, onComplete }">
         <div class="space-y-8">
           <div class="flex justify-center">
@@ -44,23 +44,23 @@
           >
             <div
               v-if="isCompleted"
-              class="flex justify-center items-start px-4 sm:px-6 md:px-8 py-4 sm:py-6 w-full"
+              class="flex justify-center items-start min-h-32 sm:min-h-40 md:min-h-50 px-4 sm:px-6 md:px-8 py-6 sm:py-8 w-full"
             >
               <div
                 class="w-full max-w-sm sm:max-w-lg md:max-w-2xl lg:max-w-4xl"
               >
                 <p
-                  class="text-lg sm:text-xl md:text-2xl lg:text-3xl leading-relaxed text-center text-gray-800 dark:text-gray-200 m-0 flex items-start justify-center"
+                  class="text-lg sm:text-xl md:text-2xl lg:text-3xl leading-relaxed text-center text-gray-800 dark:text-gray-200 m-0 min-h-[3em] flex items-start justify-center"
                 >
                   <span class="inline-block">
-                    老二想："木头比稻草结实多了，我要用木头盖一座坚固的房子！"
+                    噜噜想："木头比稻草结实多了，我要用木头盖一座坚固的房子！"
                   </span>
                 </p>
               </div>
             </div>
             <TypewriterText
               v-else-if="isActive"
-              text='老二想："木头比稻草结实多了，我要用木头盖一座坚固的房子！"'
+              text='噜噜想："木头比稻草结实多了，我要用木头盖一座坚固的房子！"'
               :speed="80"
               @complete="onComplete"
             />
@@ -145,30 +145,30 @@
         </div>
       </template>
 
-      <!-- 步骤3: 老二的满意 -->
+      <!-- 步骤3: 噜噜的满意 -->
       <template #step-3="{ isActive, isCompleted, onComplete }">
         <div class="space-y-8">
-          <!-- 老二的满意 -->
+          <!-- 噜噜的满意 -->
           <div>
             <div
               v-if="isCompleted"
-              class="flex justify-center items-start px-4 sm:px-6 md:px-8 py-4 sm:py-6 w-full"
+              class="flex justify-center items-start min-h-32 sm:min-h-40 md:min-h-50 px-4 sm:px-6 md:px-8 py-6 sm:py-8 w-full"
             >
               <div
                 class="w-full max-w-sm sm:max-w-lg md:max-w-2xl lg:max-w-4xl"
               >
                 <p
-                  class="text-lg sm:text-xl md:text-2xl lg:text-3xl leading-relaxed text-center text-gray-800 dark:text-gray-200 m-0 flex items-start justify-center"
+                  class="text-lg sm:text-xl md:text-2xl lg:text-3xl leading-relaxed text-center text-gray-800 dark:text-gray-200 m-0 min-h-[3em] flex items-start justify-center"
                 >
                   <span class="inline-block">
-                    老二看着自己的木头房子，自豪地说："这房子比稻草房结实多了，我很安全！"
+                    噜噜看着自己的木头房子，自豪地说："这房子比稻草房结实多了，我很安全！"
                   </span>
                 </p>
               </div>
             </div>
             <TypewriterText
               v-else-if="isActive"
-              text='老二看着自己的木头房子，自豪地说："这房子比稻草房结实多了，我很安全！"'
+              text='噜噜看着自己的木头房子，自豪地说："这房子比稻草房结实多了，我很安全！"'
               :speed="80"
               @complete="() => onFinalComplete(onComplete)"
             />
