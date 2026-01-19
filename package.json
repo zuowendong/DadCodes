@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-     "dev:pigs": "pnpm run -C packages/interactive-three-little-pigs dev"
+     "dev:pigs": "pnpm run -C packages/interactive-three-little-pigs dev",
+     "build:pigs": "pnpm run -C packages/interactive-three-little-pigs build"
   },
   "keywords": [],
   "author": "",
